@@ -491,6 +491,56 @@
 # define USBMFGSTRING                   "The Autopilot"
 # define USB_FORCE_DISCONNECT			1
 
+/****************************************************************************
+ * TARGET_HW_TYPHOONQ
+ ****************************************************************************/
+
+#elif  defined(TARGET_HW_TYPHOONQ)
+
+# define APP_LOAD_ADDRESS               0x0800C000
+# define BOOTLOADER_DELAY               5000
+# define BOARD_TYPHOONQ
+# define INTERFACE_USB                  1
+# define INTERFACE_USART                1
+# define USBDEVICESTRING                "PX4 BL TyphoonQ"
+# define USBPRODUCTID                   0x0040
+# define BOOT_DELAY_ADDRESS             0x000001a0
+
+# define BOARD_TYPE                     99
+# define BOARD_FLASH_SECTORS            23
+# define BOARD_FLASH_SIZE               (2 * 1024 * 1024)
+# define BOARD_FIRST_FLASH_SECTOR_TO_ERASE  2
+# define APP_RESERVATION_SIZE			(2 * 16 * 1024) /* 2 16 Kib Sectors */
+# define OSC_FREQ                       16
+
+# define BOARD_USART  					UART8
+# define BOARD_USART_CLOCK_REGISTER 	RCC_APB1ENR
+# define BOARD_USART_CLOCK_BIT      	RCC_APB1ENR_UART8EN
+
+# define BOARD_PORT_USART   			GPIOE
+# define BOARD_PORT_USART_AF 			GPIO_AF8
+# define BOARD_PIN_TX     				GPIO1
+# define BOARD_PIN_RX		     		GPIO0
+# define BOARD_USART_PIN_CLOCK_REGISTER RCC_AHB1ENR
+# define BOARD_USART_PIN_CLOCK_BIT  	RCC_AHB1ENR_GPIOEEN
+
+# define BOARD_PIN_LED_ACTIVITY         GPIO13
+# define BOARD_PIN_LED_BOOTLOADER       GPIO10
+# define BOARD_PORT_LEDS                GPIOD
+# define BOARD_CLOCK_LEDS               RCC_AHB1ENR_GPIODEN
+# define BOARD_LED_ON                   gpio_clear
+# define BOARD_LED_OFF                  gpio_set
+
+# define BOARD_POWER_PIN_OUT            GPIO4
+# define BOARD_POWER_PORT               GPIOA
+# define BOARD_POWER_CLOCK_REGISTER     RCC_AHB1ENR
+# define BOARD_POWER_CLOCK_BIT          RCC_AHB1ENR_GPIOAEN
+# define BOARD_POWER_ON                 gpio_set
+# define BOARD_POWER_OFF                gpio_clear
+# undef  BOARD_POWER_PIN_RELEASE		/* Leave pin enabling Power - un comment to release (disable power)*/
+# define USBMFGSTRING                   "YUNEEC Elect"
+# define USB_FORCE_DISCONNECT			1
+
 #else
 # error Undefined Target Hardware
 #endif
