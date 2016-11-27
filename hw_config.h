@@ -315,6 +315,40 @@
 # define BOARD_LED_OFF                  gpio_clear
 
 /****************************************************************************
+ * TARGET_HW_PX4_AEROCORE_V1
+ ****************************************************************************/
+
+#elif  defined(TARGET_HW_PX4_AEROCORE_V1)
+
+# define APP_LOAD_ADDRESS               0x08004000
+# define BOOTLOADER_DELAY               5000
+# define BOARD_AEROCORE
+# define INTERFACE_USB                  1
+# define INTERFACE_USART                0
+# define USBDEVICESTRING                "Gumstix BL AEROCORE"
+# define USBPRODUCTID                   0x1001
+
+# define BOARD_TYPE                     98
+# define BOARD_FLASH_SECTORS            23
+# define BOARD_FLASH_SIZE               (2048 * 1024)
+
+# define OSC_FREQ                       24
+
+# define BOARD_PIN_LED_ACTIVITY         GPIO10  // Yellow
+# define BOARD_PIN_LED_BOOTLOADER       GPIO9   // Blue
+# define BOARD_PORT_LEDS                GPIOE
+# define BOARD_CLOCK_LEDS               RCC_AHB1ENR_IOPEEN
+# define BOARD_LED_ON                   gpio_clear
+# define BOARD_LED_OFF                  gpio_set
+
+# define BOARD_FORCE_BL_PIN_OUT         GPIO0   // J11 header, pin 1
+# define BOARD_FORCE_BL_PIN_IN          GPIO1   // J11 header, pin 3
+# define BOARD_FORCE_BL_PORT            GPIOB
+# define BOARD_FORCE_BL_CLOCK_REGISTER  RCC_AHB1ENR
+# define BOARD_FORCE_BL_CLOCK_BIT       RCC_AHB1ENR_IOPBEN
+# define BOARD_FORCE_BL_PULL            GPIO_PUPD_PULLUP
+
+/****************************************************************************
  * TARGET_HW_PX4_PIO_V1 or TARGET_HW_PX4_PIO_V2
  ****************************************************************************/
 
@@ -359,40 +393,6 @@
 # define BOARD_FLASH_SECTORS            60
 # define BOARD_TYPE                     10
 # define FLASH_SECTOR_SIZE              0x400
-
-/****************************************************************************
- * TARGET_HW_PX4_AEROCORE_V1
- ****************************************************************************/
-
-#elif  defined(TARGET_HW_PX4_AEROCORE_V1)
-
-# define APP_LOAD_ADDRESS               0x08004000
-# define BOOTLOADER_DELAY               5000
-# define BOARD_AEROCORE
-# define INTERFACE_USB                  1
-# define INTERFACE_USART                0
-# define USBDEVICESTRING                "Gumstix BL AEROCORE"
-# define USBPRODUCTID                   0x1001
-
-# define BOARD_TYPE                     98
-# define BOARD_FLASH_SECTORS            23
-# define BOARD_FLASH_SIZE               (2048 * 1024)
-
-# define OSC_FREQ                       24
-
-# define BOARD_PIN_LED_ACTIVITY         GPIO10  // Yellow
-# define BOARD_PIN_LED_BOOTLOADER       GPIO9   // Blue
-# define BOARD_PORT_LEDS                GPIOE
-# define BOARD_CLOCK_LEDS               RCC_AHB1ENR_IOPEEN
-# define BOARD_LED_ON                   gpio_clear
-# define BOARD_LED_OFF                  gpio_set
-
-# define BOARD_FORCE_BL_PIN_OUT         GPIO0   // J11 header, pin 1
-# define BOARD_FORCE_BL_PIN_IN          GPIO1   // J11 header, pin 3
-# define BOARD_FORCE_BL_PORT            GPIOB
-# define BOARD_FORCE_BL_CLOCK_REGISTER  RCC_AHB1ENR
-# define BOARD_FORCE_BL_CLOCK_BIT       RCC_AHB1ENR_IOPBEN
-# define BOARD_FORCE_BL_PULL            GPIO_PUPD_PULLUP
 
 /****************************************************************************
  * TARGET_HW_PX4_MAVSTATION_V1

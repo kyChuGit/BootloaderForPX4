@@ -311,8 +311,8 @@ usb_cinit(void)
 	gpio_set(GPIOA, GPIO8);
 	gpio_set_mode(GPIOA, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, GPIO8);
 
-	usbd_dev = usbd_init(&stm32f103_usb_driver, &dev, &config, usb_strings, NUM_USB_STRINGS,
-			     usbd_control_buffer, sizeof(usbd_control_buffer));
+	usbd_dev = usbd_init(&f103_usb_driver, &dev, &config, usb_strings, NUM_USB_STRINGS,
+			     usbd_control_buffer, sizeof(usbd_control_buffer));//stm32f103_usb_driver
 #endif
 
 	usbd_register_set_config_callback(usbd_dev, cdcacm_set_config);
